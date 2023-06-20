@@ -1,7 +1,7 @@
 {
-  "name": "marked-smartypants",
-  "version": "1.0.2",
-  "description": "marked extension for smartypants",
+  "name": "marked-smartypants-lite",
+  "version": "1.0.0",
+  "description": "marked extension for smartypants - lite version",
   "main": "./lib/index.cjs",
   "module": "./lib/index.mjs",
   "browser": "./lib/index.umd.js",
@@ -24,19 +24,20 @@
   "scripts": {
     "test": "npm run build && cross-env NODE_OPTIONS=--experimental-vm-modules jest --verbose",
     "test:cover": "npm run build && cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage",
-    "lint": "eslint .",
+		"lint:dry": "eslint .",
+    "lint": "eslint . --fix",
     "build": "rollup -c rollup.config.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/markedjs/marked-smartypants.git"
+    "url": "git+https://github.com/calculuschild/marked-smartypants-lite.git"
   },
-  "author": "Tony Brix <Tony@Brix.ninja> (https://Tony.Brix.ninja)",
+  "author": "Trevor Buckner <calculuschild@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/markedjs/marked-smartypants/issues"
+    "url": "https://github.com/calculuschild/marked-smartypants-lite/issues"
   },
-  "homepage": "https://github.com/markedjs/marked-smartypants#readme",
+  "homepage": "https://github.com/calculuschild/marked-smartypants-lite#readme",
   "peerDependencies": {
     "marked": "^4 || ^5"
   },
@@ -58,8 +59,5 @@
     "marked": "^5.1.0",
     "rollup": "^3.25.1",
     "semantic-release": "^21.0.5"
-  },
-  "dependencies": {
-    "smartypants": "^0.2.2"
   }
 }

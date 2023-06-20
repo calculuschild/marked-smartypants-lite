@@ -1,28 +1,29 @@
 module.exports = {
-  runTests(marked, markedSmartypants) {
-    describe('markedSmartypants', () => {
+  runTests(marked, markedSmartypantsLite) {
+    describe('markedSmartypantsLite', () => {
       beforeEach(() => {
         marked.setOptions(marked.getDefaults());
+				marked.use({ mangle: false, headerIds: false });
       });
 
-      test('quotes around em', () => {
-        marked.use(markedSmartypants());
-        expect(marked('"**test**"')).toMatchInlineSnapshot(`
-    "<p>&#8220;<strong>test</strong>&#8221;</p>
-    "
-    `);
+      test('quotes inside strong', () => {
+        marked.use(markedSmartypantsLite());
+        expect(marked('**"test"**')).toMatchInlineSnapshot(`
+"<p><strong>“test”</strong></p>
+"
+`);
       });
 
       test('simple sentence', () => {
-        marked.use(markedSmartypants());
+        marked.use(markedSmartypantsLite());
         expect(marked('# He said, -- "A \'simple\' sentence. . ." --- unknown', { headerIds: false })).toMatchInlineSnapshot(`
-    "<h1>He said, &#8211; &#8220;A &#8216;simple&#8217; sentence&#8230;&#8221; &#8212; unknown</h1>
-    "
-    `);
+"<h1>He said, – “A ‘simple’ sentence. . .” — unknown</h1>
+"
+`);
       });
 
       test('leaves codespan', () => {
-        marked.use(markedSmartypants());
+        marked.use(markedSmartypantsLite());
         expect(marked('`He said, -- "A \'simple\' sentence. . ." --- unknown`')).toMatchInlineSnapshot(`
     "<p><code>He said, -- &quot;A &#39;simple&#39; sentence. . .&quot; --- unknown</code></p>
     "
@@ -30,7 +31,7 @@ module.exports = {
       });
 
       test('leaves code block', () => {
-        marked.use(markedSmartypants());
+        marked.use(markedSmartypantsLite());
         expect(marked('```\nHe said, -- "A \'simple\' sentence. . ." --- unknown\n```')).toMatchInlineSnapshot(`
     "<pre><code>He said, -- &quot;A &#39;simple&#39; sentence. . .&quot; --- unknown
     </code></pre>
