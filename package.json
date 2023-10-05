@@ -1,6 +1,6 @@
 {
   "name": "marked-smartypants-lite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "marked extension for smartypants - lite version",
   "main": "./lib/index.cjs",
   "module": "./lib/index.mjs",
@@ -24,7 +24,7 @@
   "scripts": {
     "test": "npm run build && cross-env NODE_OPTIONS=--experimental-vm-modules jest --verbose",
     "test:cover": "npm run build && cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage",
-		"lint:dry": "eslint .",
+    "lint:dry": "eslint .",
     "lint": "eslint . --fix",
     "build": "rollup -c rollup.config.js"
   },
