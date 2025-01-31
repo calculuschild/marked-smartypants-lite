@@ -1,6 +1,6 @@
 {
   "name": "marked-smartypants-lite",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "marked extension for smartypants - lite version",
   "main": "./lib/index.cjs",
   "module": "./lib/index.mjs",
